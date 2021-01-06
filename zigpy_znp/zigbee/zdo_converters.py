@@ -119,13 +119,14 @@ ZDO_CONVERTERS = {
     ),
     ZDOCmd.Unbind_req: (
         (
-            lambda addr, SrcAddress, SrcEndpoint, ClusterID, DstAddress: (
+            lambda addr, SrcAddress, SrcEndpoint, ClusterID, DstAddress, DstEndpoint: (
                 c.ZDO.UnBindReq.Req(
                     Dst=addr.address,
                     Src=SrcAddress,
                     SrcEndpoint=SrcEndpoint,
                     ClusterId=ClusterID,
                     Address=DstAddress,
+                    DstEndpoint=DstEndpoint,
                 )
             )
         ),
@@ -135,10 +136,7 @@ ZDO_CONVERTERS = {
     ZDOCmd.Mgmt_Lqi_req: (
         (
             lambda addr, StartIndex: (
-                c.ZDO.MgmtLqiReq.Req(
-                    Dst=addr.address,
-                    StartIndex=StartIndex,
-                )
+                c.ZDO.MgmtLqiReq.Req(Dst=addr.address, StartIndex=StartIndex,)
             )
         ),
         (lambda addr: c.ZDO.MgmtLqiRsp.Callback(partial=True, Src=addr.address)),
@@ -152,10 +150,7 @@ ZDO_CONVERTERS = {
     ZDOCmd.Mgmt_Rtg_req: (
         (
             lambda addr, StartIndex: (
-                c.ZDO.MgmtRtgReq.Req(
-                    Dst=addr.address,
-                    StartIndex=StartIndex,
-                )
+                c.ZDO.MgmtRtgReq.Req(Dst=addr.address, StartIndex=StartIndex,)
             )
         ),
         (lambda addr: c.ZDO.MgmtRtgRsp.Callback(partial=True, Src=addr.address)),
