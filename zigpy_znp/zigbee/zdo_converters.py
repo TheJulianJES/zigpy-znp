@@ -119,14 +119,14 @@ ZDO_CONVERTERS = {
     ),
     ZDOCmd.Unbind_req: (
         (
-            lambda addr, SrcAddress, SrcEndpoint, ClusterID, DstAddress, DstEndpoint: (
+            lambda addr, SrcAddress, SrcEndpoint, ClusterID, DstAddress: (
                 c.ZDO.UnBindReq.Req(
                     Dst=addr.address,
                     Src=SrcAddress,
                     SrcEndpoint=SrcEndpoint,
                     ClusterId=ClusterID,
                     Address=DstAddress,
-                    DstEndpoint=DstEndpoint,
+                    DstEndpoint=SrcEndpoint,
                 )
             )
         ),
