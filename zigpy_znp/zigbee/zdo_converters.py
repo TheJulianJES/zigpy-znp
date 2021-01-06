@@ -125,7 +125,7 @@ ZDO_CONVERTERS = {
                     Src=SrcAddress,
                     SrcEndpoint=SrcEndpoint,
                     ClusterId=ClusterID,
-                    Address=DstAddress,
+                    Address=addr.mode,
                     DstEndpoint=SrcEndpoint,
                 )
             )
