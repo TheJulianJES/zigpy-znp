@@ -131,7 +131,7 @@ ZDO_CONVERTERS = {
             )
         ),
         (lambda addr: c.ZDO.UnBindRsp.Callback(partial=True, Src=addr.address)),
-        (lambda rsp: (ZDOCmd.UnBind_rsp, {"Status": rsp.Status})),
+        (lambda rsp: (ZDOCmd.Unbind_rsp, {"Status": rsp.Status})),
     ),
     ZDOCmd.Mgmt_Lqi_req: (
         (
