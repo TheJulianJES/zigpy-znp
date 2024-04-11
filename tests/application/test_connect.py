@@ -1,3 +1,4 @@
+import asyncio
 from unittest.mock import AsyncMock, patch
 
 import pytest
@@ -206,6 +207,7 @@ async def test_watchdog(device, make_application):
     app._watchdog_feed = AsyncMock(wraps=app._watchdog_feed)
 
     await app.startup(auto_form=False)
+    await asyncio.sleep(0.6)
     assert len(app._watchdog_feed.mock_calls) >= 5
 
     await app.shutdown()
