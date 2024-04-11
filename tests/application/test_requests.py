@@ -51,7 +51,7 @@ async def test_zigpy_request(device, make_application):
     app, znp_server = make_application(device)
     await app.startup(auto_form=False)
 
-    TSN = 7
+    TSN = 1
 
     device = app.add_initialized_device(ieee=t.EUI64(range(8)), nwk=0xAABB)
 
@@ -111,7 +111,7 @@ async def test_zigpy_request_failure(device, make_application, mocker):
     app, znp_server = make_application(device)
     await app.startup(auto_form=False)
 
-    TSN = 7
+    TSN = 1
 
     device = app.add_initialized_device(ieee=t.EUI64(range(8)), nwk=0xAABB)
 
@@ -456,7 +456,7 @@ async def test_request_cancellation_shielding(
 
 @pytest.mark.parametrize("device", [FormedLaunchpadCC26X2R1])
 async def test_request_recovery_route_rediscovery_zdo(device, make_application, mocker):
-    TSN = 7
+    TSN = 1
 
     app, znp_server = make_application(server_cls=device)
 
