@@ -203,11 +203,10 @@ async def test_disconnect_failure(device, make_application):
 @pytest.mark.parametrize("device", [FormedLaunchpadCC26X2R1])
 async def test_watchdog(device, make_application):
     app, znp_server = make_application(server_cls=device)
-    await app.startup(auto_form=False)
-
     app._watchdog_feed = AsyncMock(wraps=app._watchdog_feed)
 
     with patch("zigpy.application.ControllerApplication._watchdog_period", new=0.1):
+        await app.startup(auto_form=False)
         await asyncio.sleep(0.6)
 
     assert len(app._watchdog_feed.mock_calls) >= 5
