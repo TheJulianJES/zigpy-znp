@@ -38,6 +38,7 @@ from zigpy_znp.types.nvids import ExNvIds, OsalNvIds
 if typing.TYPE_CHECKING:
     import typing_extensions
 
+LIB_VERSION = importlib.metadata.version("zigpy-znp")
 LOGGER = logging.getLogger(__name__)
 
 
@@ -148,7 +149,7 @@ class ZNP:
         )
 
         network_info = zigpy.state.NetworkInfo(
-            source=f"zigpy-znp@{importlib.metadata.version('zigpy-znp')}",
+            source=f"zigpy-znp@{LIB_VERSION}",
             extended_pan_id=nib.extendedPANID,
             pan_id=nib.nwkPanId,
             nwk_update_id=nib.nwkUpdateId,

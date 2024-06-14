@@ -14,6 +14,7 @@ from zigpy_znp.api import ZNP
 from zigpy_znp.tools.common import ClosableFileType, setup_parser, validate_backup_json
 from zigpy_znp.zigbee.application import ControllerApplication
 
+LIB_VERSION = importlib.metadata.version("zigpy-znp")
 LOGGER = logging.getLogger(__name__)
 
 
@@ -84,7 +85,7 @@ async def backup_network(znp: ZNP) -> t.JSONType:
 
     now = datetime.datetime.now().astimezone()
 
-    obj["metadata"]["source"] = f"zigpy-znp@{importlib.metadata.version('zigpy-znp')}"
+    obj["metadata"]["source"] = f"zigpy-znp@{LIB_VERSION}"
     obj["metadata"]["internal"] = {
         "creation_time": now.isoformat(timespec="seconds"),
         "zstack": {
